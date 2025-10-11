@@ -1,25 +1,61 @@
 //Dependencias 
 import {View, Text, TextInput, Button} from 'react-native';
-import { StyleSheet } from 'react-native/types_generated/index';
+import {useState} from "react"
 
 export default function CalculadoraScreen(){
+
+  const [num1, setNum1] = useState('');
+  const [num2, setNum2] = useState('');
+  const [resultado, setResultado] = useState(null);
+
+  function Calcular(){
+  //Convertir a numero 
+  const n1 = parseFloat(num1) || 0;
+  const n2 = parseFloat(num2) || 0;
+  setResultado(n1 + n2);
+}
+
      return (
         <View>
             <Text>Calculadora</Text>
             <TextInput 
+            value={num1}
+            onChangeText={setNum1}
              keyboardType="numeric"
              placeholder="Primer numero" />
             <TextInput 
+             value={num2}
+            onChangeText={setNum2}
              keyboardType="numeric"
              placeholder="Segundo numero" />
-            <Button
+            <Button onPress={calcular}
              color="#555" 
              title="Calcular" />
-               <Text>Resultado:</Text>
+               <Text style={styles.text}> Resultado:{resultado}</Text>
             </View>
      );
 }
 
 const styles = StyleSheet.create({
-
+      container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    padding: 24
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#D1D5DB",
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 12,
+    fontSize: 16,
+    backgroundColor: "#FFF",
+  },
+  text: {
+    marginTop: 20,
+    fontSize: 20,
+    textAlign: "justify",
+    color: "#000",
+  }
 });
