@@ -1,5 +1,5 @@
 //Dependencias 
-import {View, Text, TextInput, Button} from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
 import {useState} from "react"
 
 export default function CalculadoraScreen(){
@@ -15,20 +15,24 @@ export default function CalculadoraScreen(){
   setResultado(n1 + n2);
 }
 
+
+
      return (
-        <View>
+        <View style={styles.container}> 
             <Text>Calculadora</Text>
             <TextInput 
             value={num1}
             onChangeText={setNum1}
+            style={styles.input}
              keyboardType="numeric"
-             placeholder="Primer numero" />
+             placeholder="Primer Numero" />
             <TextInput 
              value={num2}
             onChangeText={setNum2}
+            style={styles.input}
              keyboardType="numeric"
              placeholder="Segundo numero" />
-            <Button onPress={calcular}
+            <Button onPress={Calcular}
              color="#555" 
              title="Calcular" />
                <Text style={styles.text}> Resultado:{resultado}</Text>
@@ -37,7 +41,7 @@ export default function CalculadoraScreen(){
 }
 
 const styles = StyleSheet.create({
-      container: {
+    container: {
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
